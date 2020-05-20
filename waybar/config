@@ -1,0 +1,143 @@
+{
+	"layer": "bottom",
+	"position": "bottom",
+
+	"modules-left": [
+		"sway/workspaces",
+		"sway/mode",
+		"custom/separator",
+		"custom/space",
+		"sway/window"
+	],
+	"modules-center": [
+	],
+	"modules-right": [
+		"pulseaudio",
+		"custom/separator",
+    "network",
+		"custom/separator",
+		"memory",
+		"custom/separator",
+		"disk",
+		"custom/separator",
+		"cpu",
+		"custom/separator",
+		"battery",
+		"custom/separator",
+		"clock#1",
+		"clock#3",
+		"clock#2",
+		"custom/separator",
+		"tray"
+	],
+
+	"custom/separator": {
+		"format": "|",
+		"tooltip": false
+	},
+	"custom/space": {
+		"format": " ",
+		"tooltip": false
+	},
+
+	"sway/workspaces": {
+		"disable-scroll": false,
+		"format": "{name}:{icon} ",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "9": "",
+      "10": "",
+      "urgent": "",
+      "focused": "",
+      "default": ""
+    }
+	},
+	"clock#1": {
+		"format": "{:%a}",
+		"tooltip": false
+	},
+	"clock#2": {
+		"format": "{:%H:%M:%S}",
+		"tooltip": false,
+    "interval": 1
+	},
+	"clock#3": {
+		"format": "{:%Y-%m-%d}",
+		"tooltip": false
+	},
+
+	"pulseaudio": {
+		"format": "{icon} {volume:2}%",
+		"format-bluetooth": "{icon}  {volume}%",
+		"format-muted": "MUTE",
+		"format-icons": {
+			"headphones": "",
+			"default": [
+				"",
+				""
+			]
+		},
+		"scroll-step": 5,
+		"on-click": "pamixer -t",
+		"on-click-right": "pavucontrol"
+	},
+
+	"memory": {
+		"interval": 5,
+		"format": " {}%"
+	},
+
+	"cpu": {
+		"interval": 5,
+		"format": "{usage:2}%"
+	},
+
+	"battery": {
+    "bat": "BAT0",
+		"states": {
+			"full": 95,
+			"good": 90,
+			"safe": 60,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{icon} {capacity}%",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		]
+	},
+
+	"disk": {
+		"interval": 5,
+		"format": "Disk {percentage_used:2}%",
+		"path": "/"
+	},
+
+	"tray": {
+		"icon-size": 20,
+    "spacing": 10
+	},
+
+  "network": {
+    "format": "{ifname}",
+    "format-wifi": "{essid} ({signalStrength}%) ",
+    "format-ethernet": "{ifname} ",
+    "format-disconnected": "", //An empty format will hide the module.
+    "format-disconnected": "⚠",
+    "tooltip-format": "{ifname}",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50
+  },
+
+  "sway/window": {
+    "max-length": 50
+  }
+}

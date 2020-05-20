@@ -1,0 +1,84 @@
+* {
+  border: none;
+  border-radius: 0;
+	font-size: 14px;
+	font-family: JetBrainsMono Medium;
+}
+
+window#waybar {
+	background: #222222;
+	color: white;
+}
+
+#workspaces,
+#clock.1,
+#clock.2,
+#clock.3,
+#pulseaudio,
+#memory,
+#cpu,
+#battery,
+#disk,
+#tray {
+}
+
+#workspaces button {
+	padding: 0 2px;
+}
+#workspaces button.focused {
+  background: #0088CC;
+	color: #ffffff;
+}
+#workspaces button.urgent {
+  background: #2f343a;
+	color: #ffffff;
+}
+#workspaces button:hover {
+	box-shadow: inherit;
+	text-shadow: inherit;
+}
+#pulseaudio {
+	background: #222222;
+}
+#memory {
+	background: #222222;
+}
+#cpu {
+}
+#battery {
+}
+#battery.full {
+  color: greenyellow;
+}
+#battery.good {
+  color: yellowgreen;
+}
+#battery.safe {
+  color: yellow;
+}
+#battery.warning {
+  color: orange;
+}
+#battery.critical {
+  color: red;
+}
+#disk {
+	background: #222222;
+}
+#network.wifi {
+  color: greenyellow;
+}
+#network.linked {
+  color: greenyellow;
+}
+#network.disconnected {
+  color: red;
+}
+#clock,
+#pulseaudio,
+#memory,
+#cpu,
+#battery,
+#disk {
+	padding: 0 10px;
+}
