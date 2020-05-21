@@ -82,3 +82,11 @@ window#waybar {
 #disk {
 	padding: 0 10px;
 }
+
+#mode {
+	background: gold;
+  color: #222222;
+}
+#window {
+  border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+}
