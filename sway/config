@@ -36,11 +36,11 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Example configuration:
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' \
-#               resume 'swaymsg "output * dpms on"' \
-#          before-sleep 'swaylock -f -c 000000'
+exec swayidle -w \
+         timeout 300 'swaylock -f -c 000000' \
+         timeout 600 'swaymsg "output * dpms off"' \
+              resume 'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -262,12 +262,10 @@ input "2:14:ETPS/2_Elantech_Touchpad" {
 
 input "1:1:AT_Translated_Set_2_keyboard" {
     xkb_layout us(intl)
-    xkb_variant ,deadkeys
 }
 
 input "6127:24648:ThinkPad_Compact_Bluetooth_Keyboard_with_TrackPoint" {
     xkb_layout us(intl)
-    xkb_variant ,deadkeys
 }
 
 input "1112:390:KYE_SYSTEMS_CORP._Wired_Mouse" {
@@ -321,5 +319,9 @@ for_window [app_id="gnome-calculator"] border none
 
 # remove ulauncher border 
 for_window [app_id="ulauncher"] border none
+
+# Opacity changes
+bindsym --whole-window --border $mod+Shift+button4 opacity plus .1
+bindsym --whole-window --border $mod+Shift+button5 opacity minus .1
 
 include /etc/sway/config.d/*
