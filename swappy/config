@@ -1,0 +1,5 @@
+[Default]
+save_dir=$HOME/Screenshots
+line_size=3
+text_size=20
+text_font=sans-serif
