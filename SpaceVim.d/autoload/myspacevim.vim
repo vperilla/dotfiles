@@ -4,3 +4,8 @@ func! myspacevim#after() abort
     let g:neomake_python_enabled_makers = ['flake8']
     let g:neomake_python_flake8_args = ['--ignore=E123,E124,E126,E128,E711,E712,W503,W504']
 endf
+func! s:transparent_background()
+    highlight Normal guibg=NONE ctermbg=NONE
+    highlight NonText guibg=NONE ctermbg=NONE
+endf
+autocmd ColorScheme * call s:transparent_background()
