@@ -1,9 +1,8 @@
 #!/bin/bash
 waybar &
-WOB_FILE=/tmp/hikari_sock.wob
-if test -f "$WOB_FILE"; then
-    rm $WOB_FILE
+if test -f "$WOB"; then
+    rm $WOB
 fi
-mkfifo $WOB_FILE && tail -f $WOB_FILE | wob &
+mkfifo $WOB && tail -f $WOB | wob &
 mako &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &

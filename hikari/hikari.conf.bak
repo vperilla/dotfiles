@@ -37,16 +37,6 @@ inputs {
       tap = true
      }
   }
-  keyboards {
-    "*" = {
-      xkb = {
-        layout = "us(intl)"
-        model = "thinkpad"
-      }
-      repeat-rate = 50
-      repeat-delay = 600
-    }
-  }
 }
 
 layouts {
@@ -95,19 +85,15 @@ layouts {
 }
 
 actions {
-  terminal = "sakura"
-  dmenu = "dmenu-wl_run"
-  volume-up = "pamixer -ui 5"
-  volume-down = "pamixer -ud 5"
-  mute = "pamixer --toggle-mute"
+  terminal = "tilix"
+  ulauncher = "ulauncher"
+  volume-up = "pamixer -ui 5 && pamixer --get-volume > /tmp/hikari_sock.wob"
+  volume-down = "pamixer -ud 5 && pamixer --get-volume > /tmp/hikari_sock.wob"
+  mute = "pamixer --toggle-mute && ( pamixer --get-mute && echo 0 > /tmp/hikari_sock.wob ) || pamixer --get-volume > /tmp/hikari_sock.wob"
   mic-mute = "amixer -q set Capture toggle"
-  light-up = "light -A 5"
-  light-down = "light -U 5"
+  light-up = "light -A 5 && light -G | cut -d'.' -f1 > /tmp/hikari_sock.wob"
+  light-down = "light -U 5 && light -G | cut -d'.' -f1 > /tmp/hikari_sock.wob"
   screenshot = "grim -g \"$(slurp)\" - | swappy -f -"
-  get-volume = "pamixer --get-volume > $WOB"
-  get-mute = "pamixer --get-mute && echo 0 > $WOB || pamixer --get-volume > $WOB"
-  get-light = "light -G | cut -d'.' -f1 > $WOB"
-  
 }
 
 bindings {
@@ -143,8 +129,8 @@ bindings {
     "LAS+Return" = layout-restack-prepend
     "L+Home"     = layout-cycle-view-first
     "L+End"      = layout-cycle-view-last
-    "L+n"        = layout-cycle-view-next
-    "L+p"        = layout-cycle-view-prev
+    "L+Tab"        = layout-cycle-view-next
+    "LS+Tab"        = layout-cycle-view-prev
     "L+x"        = layout-exchange-view-next
     "LS+x"       = layout-exchange-view-prev
     "LA+x"       = layout-exchange-view-main
@@ -164,13 +150,13 @@ bindings {
     "LS+j"          = view-pin-to-sheet-next
     "LS+k"          = view-pin-to-sheet-prev
 
-    "L+u"  = view-raise
-    "L+d"  = view-lower
+    "LS+u"  = view-raise
+    "LS+d"  = view-lower
     "L+o"  = view-only
     "L+h"  = view-hide
     "L+q"  = view-quit
-    "LS+n" = view-cycle-next
-    "LS+p" = view-cycle-prev
+    "LA+Tab" = view-cycle-next
+    "LAS+Tab" = view-cycle-prev
 
     "L+Up"      = view-move-up
     "L+Down"    = view-move-down
@@ -199,10 +185,10 @@ bindings {
 
     "LS+o"           = group-only
     "LS+h"           = group-hide
-    "LS+u"           = group-raise
-    "LS+d"           = group-lower
-    "L+Tab"          = group-cycle-prev
-    "LS+Tab"         = group-cycle-next
+    "LAS+u"          = group-raise
+    "LAS+d"          = group-lower
+    "L+n"            = group-cycle-prev
+    "L+p"            = group-cycle-next
     "L+asciicircum"  = group-cycle-view-prev
     "LS+asciicircum" = group-cycle-view-next
     "LS+Home"        = group-cycle-view-first
@@ -233,29 +219,14 @@ bindings {
     "A+F9" = vt-switch-to-9
 
     # My own settings
-    "L+e" = action-dmenu
-    "0+XF86AudioLowerVolume" = {
-        begin = action-volume-down
-        end = action-get-volume
-    }
-    "0+XF86AudioRaiseVolume" = {
-        begin = action-volume-up
-        end = action-get-volume
-    }
-    "0+XF86AudioMute" = {
-        begin = action-mute
-        end = action-get-mute
-    }
+    "L+d" = action-ulauncher
+    "0+XF86AudioLowerVolume" = action-volume-down
+    "0+XF86AudioRaiseVolume" = action-volume-up
+    "0+XF86AudioMute" = action-mute
     "0+XF86AudioMicMute" = action-mic-mute
     "LS+m" = action-mic-mute
-    "0+XF86MonBrightnessDown" = {
-        begin = action-light-down
-        end = action-get-light
-    }
-    "0+XF86MonBrightnessUp" = {
-        begin = action-light-up
-        end = action-get-light
-    }
+    "0+XF86MonBrightnessDown" = action-light-down
+    "0+XF86MonBrightnessUp" = action-light-up
     "0+print" = action-screenshot
 
   }
