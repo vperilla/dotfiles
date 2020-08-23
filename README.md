@@ -1,7 +1,8 @@
 # dotfiles
 
-My basic sway + waybar + ulauncher + spacevim settings...
-![Screenshot](/Swappshot.png)
+My basic hikari + waybar + ulauncher + spacevim settings...
+![Screenshot](/Swappshot_1.png)
 
-![Demo1](/video.gif)
+![Screenshot](/Swappshot_2.png)
+
 ![Demo2](/spacevim.gif)
